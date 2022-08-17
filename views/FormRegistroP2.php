@@ -69,6 +69,7 @@
                 
               <label class="form-label" for="apellidos">Contraseña</label>
               <input type="password" name="contra" class="form-control" placeholder="Escribe tu contraseña"/>
+              <input type="hidden" name="rol"value="user" class="form-control" placeholder="Escribe tu contraseña"/>
             </div>
              <!-- Numero de telefono -->
              
