@@ -57,14 +57,16 @@
                   <p>Escribe tus datos</p>
 
                   <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example11">Correo</label>
                     <input type="email" id="form2Example11" name="correo" class="form-control"
                       placeholder="Escribe tu correo"/>
-                    <label class="form-label" for="form2Example11">Correo</label>
+                   
                   </div>
 
                   <div class="form-outline mb-4">
+                   <label class="form-label" for="form2Example22">Contraseña</label>
                     <input type="password" id="form2Example22" name="contrasena" class="form-control" placeholder="Escribe tu contraseña" />
-                    <label class="form-label" for="form2Example22">Contraseña</label>
+                   
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
