@@ -64,7 +64,7 @@
                 <br><br>
                 <hr>
                 <?php
-                echo "<a href='../views/AgregarProductos.php?rol=$ROL' class='list-group-item list-group-item-action flex-column align-items-start'>";
+                echo "<a href='../views/AgregarProductos.php' class='list-group-item list-group-item-action flex-column align-items-start'>";
                 ?>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">Añadir productos</h5>
@@ -74,7 +74,7 @@
                     <small></small>
                 </a>
                 <?php
-                echo "<a href='Modificar.php?rol=$ROL' class='list-group-item list-group-item-action flex-column align-items-start'>";
+                echo "<a href='Modificar.php' class='list-group-item list-group-item-action flex-column align-items-start'>";
                 ?>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">Modificar Productos</h5>

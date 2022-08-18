@@ -71,12 +71,8 @@
 
      
           session_start();
-          $ROL = $_GET['rol'];
-          if ($ROL == 1) 
-          {
-          ?>
-        <?php
-          }
+          
+          
         ?>
         <?php 
              
@@ -101,7 +97,7 @@
               echo "</li> ";
             ?>
             <?php
-                if ($ROL == 0) 
+                if ($_SESSION['rol'] == 0) 
                 {
             
             echo "<li class='nav-item dropdown'>"; 
@@ -109,11 +105,11 @@
                     Administrar
                     </a> 
                     <ul class='dropdown-menu bg-dark ' aria-labelledby='navbarDropdown'>
-                    <li><a class='dropdown-item clr-blanco' href='AdminProd.php?rol=$ROL'>Administrar Productos</a></li>
+                    <li><a class='dropdown-item clr-blanco' href='AdminProd.php'>Administrar Productos</a></li>
                       <li><hr class='dropdown-divider'></li>
-                      <li><a class='dropdown-item clr-blanco' href='AdminVenta.php?rol=$ROL'>Registros de Venta</a></li>
+                      <li><a class='dropdown-item clr-blanco' href='AdminVenta.php'>Registros de Venta</a></li>
                       <li><hr class='dropdown-divider'></li>
-                      <li><a class='dropdown-item clr-blanco' href='AdminClientes.php?rol=$ROL'>Clientes Registrados</a></li>
+                      <li><a class='dropdown-item clr-blanco' href='AdminClientes.php'>Clientes Registrados</a></li>
                     </ul>";
              echo "</li> ";
                 }

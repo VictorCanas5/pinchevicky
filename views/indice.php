@@ -44,8 +44,12 @@ foreach ($card as $registros){
 <p><?php echo "$". $registros->precio?></p>
 <p><?php echo "Existencia: " . $registros->exitencia?></p>
 <p><?php echo "Categoria: " .  $registros->prenda?></p>
-<a href="#">Ver Producto</a>
-<a href="#">Agregar al carrito</a>
+<form action="">
+  <button href="">Ver Producto</button> 
+  <button href="#">Agregar al carrito</button>
+</form>
+
+
 </div>
 </div>
 </div>
@@ -55,10 +59,10 @@ foreach ($card as $registros){
 <!-- inicio del usuario-->
 <figure class="text-center">
   <blockquote class="blockquote">
-    <p>A well-known quote, contained in a blockquote element.</p>
+    <p>FOOTER</p>
   </blockquote>
   <figcaption class="blockquote-footer">
-    Someone famous in <cite title="Source Title">Source Title</cite>
+    sexo <cite title="Source Title">anal</cite>
   </figcaption>
 </figure>
     <!-- Bootstrap JavaScript Libraries -->

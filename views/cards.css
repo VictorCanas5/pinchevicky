@@ -53,7 +53,7 @@
 	font-size: 14px;
 	margin-bottom: 5px;
 }
-.card .contenido-card a{
+.card .contenido-card button{
 	display: inline-block;
 	padding: 10px;
 	margin-top: 10px;
@@ -63,8 +63,9 @@
 	border-radius: 4px;
 	transition: all 400ms ease;
 	margin-bottom: 5px;
+	background-color: white;
 }
-.card .contenido-card a:hover{
+.card .contenido-card button:hover{
 	background: #2fb4cc;
 	color: #fff;
 }
