@@ -52,14 +52,14 @@
 
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">BZ shop</a>
+    <a class="navbar-brand" href="http://localhost/pinchevicky/views/indice.php">BZ shop</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active"  aria-current="page" href="http://localhost/pinchevicky/views/indice.php?rol=."<?php $ROL ?>">Inicio</a>
+          <a class="nav-link active"  aria-current="page" href="http://localhost/pinchevicky/views/indice.php">Inicio</a>
        
         <!-- botones del user-->
         <?php
@@ -97,7 +97,7 @@
               echo "</li> ";
             ?>
             <?php
-                if ($_SESSION['rol'] == 0) 
+                if (isset($_SESSION['rol']) && $_SESSION['rol']== 0) 
                 {
             
             echo "<li class='nav-item dropdown'>"; 

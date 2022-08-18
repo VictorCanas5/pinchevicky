@@ -45,9 +45,9 @@ class Login
                 $_SESSION['rol']=$rol;
                 echo " <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css'  integrity='sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor' crossorigin='anonymous'>
                 <div class='alert alert-success'>";
-                echo"<h2 align='center'>Bienvenido ".$_SESSION['nombre']."</h2>";
+                echo"<h2 align='center'>Bienvenido/a ".$_SESSION['nombre']."</h2>";
                 echo "</div>";
-                header("refresh:2 ../indice.php?rol=$rol");
+                header("refresh:2 ../indice.php");
             }
             else
             {
@@ -66,9 +66,10 @@ class Login
     public function cerrarsesion()
     {
         session_start();
+        
         session_destroy();
        
-        header("Location: ../../views/indice.php?rol=");
+        header("refresh:3 ../../views/indice.php");
     }
 
 }

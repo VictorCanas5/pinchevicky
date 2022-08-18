@@ -53,7 +53,7 @@
 	font-size: 14px;
 	margin-bottom: 5px;
 }
-.card .contenido-card button{
+.card .contenido-card input{
 	display: inline-block;
 	padding: 10px;
 	margin-top: 10px;
@@ -65,7 +65,7 @@
 	margin-bottom: 5px;
 	background-color: white;
 }
-.card .contenido-card button:hover{
+.card .contenido-card input:hover{
 	background: #2fb4cc;
 	color: #fff;
 }

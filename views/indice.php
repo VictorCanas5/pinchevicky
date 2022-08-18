@@ -19,7 +19,7 @@ use MyApp\Query\Select;
 require("../vendor/autoload.php");
 $query = new Select();
 
-$cadena = "SELECT imagen,nombre,precio,exitencia,prenda FROM productos JOIN categoria_prenda on 
+$cadena = "SELECT cve_prod,imagen,nombre,precio,exitencia,prenda FROM productos JOIN categoria_prenda on 
 productos.categoria_prenda= categoria_prenda.cve_pcat where exitencia>0";
 
 $card = $query->seleccionar($cadena);
@@ -44,12 +44,8 @@ foreach ($card as $registros){
 <p><?php echo "$". $registros->precio?></p>
 <p><?php echo "Existencia: " . $registros->exitencia?></p>
 <p><?php echo "Categoria: " .  $registros->prenda?></p>
-<form action="">
-  <button href="">Ver Producto</button> 
-  <button href="#">Agregar al carrito</button>
-</form>
-
-
+<a href="http://localhost/pinchevicky/views/products/verProducto.php?cve_prod=<?php echo $registros->cve_prod?>"><input type="submit" value="Ver Producto"></a>
+<a href=""><input type="submit" value="Agregar al carrito"></a>
 </div>
 </div>
 </div>
