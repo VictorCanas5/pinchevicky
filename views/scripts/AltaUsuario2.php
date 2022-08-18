@@ -17,7 +17,7 @@
       use MyApp\data\database;
       use MyApp\query\Ejecuta;
       session_start();
-      $ROL = $_GET['rol'];
+      $ROL = $_POST['rol'];
       if ($ROL == NULL) 
       {
         header("refresh:2 ../../index.php");
