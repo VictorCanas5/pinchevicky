@@ -52,23 +52,6 @@
   <?php
 
 
-/* session_start();
-if (!isset($_SESSION["admin"])) 
-=======
-session_start();
-$ROL = $_GET['rol'];
-if ($ROL == 1) 
->>>>>>> b1f9b05abe644f2745728c647a7605657070f773
-{
-    header("refresh:2 alert.php");
-  
-}
-
-else
-{ *
-
-else if ($ROL == 0)
-{*/
 ?>
 
             <nav class="nav justify-content-center navbar-dark bg-dark ">
@@ -117,9 +100,7 @@ else if ($ROL == 0)
     </div>
     
 
-    <?php
-/*         }
- */    ?>
+   
     
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>

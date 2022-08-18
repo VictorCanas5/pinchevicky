@@ -73,17 +73,7 @@
     </style>
   </head>
   <body>
-  <?php
-session_start();
-$ROL = $_GET['rol'];
-if ($ROL == 1) 
-{
-    header("refresh:2 alert.php");
-  
-}
-else if ($ROL == 0)
-{
-?>
+ 
             <nav class="nav justify-content-center navbar-dark bg-dark ">
               <a class="nav-link disabled" href="#">Agregar Productos</a>
               <a class="nav-link clr-blanco" href="Modificar.php">Regresar</a>
@@ -196,9 +186,6 @@ else if ($ROL == 0)
 
                 ?>
 
-                <?php
-              }
-              ?>
               <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 
