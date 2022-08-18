@@ -1,21 +1,10 @@
 <?php
 
-class Validar{
-
-public function Auth(){
-    
-    if($_SESSION['nombre']=="")
-    {
-
-      header("refresh: ../../index.php?rol=");
-      
-    }
-    else{
-        
-    }
- 
+if($_SESSION['nombre']==NULL)
+{
+  echo "<script> window.location.href='http://localhost/pinchevicky/views/indice.php?rol='</script>";
+  
 }
 
-}
 
 ?>

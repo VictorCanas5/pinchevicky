@@ -44,16 +44,7 @@
   <?php
     require('../components/navbar.php');
       require('../scripts/validarUser.php');
-      if($_SESSION['nombre']==NULL)
-    {
-       ?>
-            <meta http-equiv='Location' content='http://localhost/pinchevicky/views/indice.php?rol='>
-            <?php     
-      
-    }
-    else{
-        echo "entraste";
-    }
+   
     $correo=$_SESSION["correo"];
     $nombre=$_SESSION["nombre"];
     $apellido=$_SESSION["apellidos"];
