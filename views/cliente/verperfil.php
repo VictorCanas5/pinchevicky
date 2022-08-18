@@ -44,7 +44,7 @@
   <?php
     require('../components/navbar.php');
       require('../scripts/validarUser.php');
-   
+
     $correo=$_SESSION["correo"];
     $nombre=$_SESSION["nombre"];
     $apellido=$_SESSION["apellidos"];

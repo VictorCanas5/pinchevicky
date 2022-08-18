@@ -4,12 +4,13 @@
   
     class Tabla
     {
-      public function GetTipoTabla($tipoTabla){
+      public function gettablaPRopductos($tipoTabla){
                
                    if(isset($_GET['perfil'])){
                         echo "caca";
                    }
                
         }
+       
     }
 ?>
