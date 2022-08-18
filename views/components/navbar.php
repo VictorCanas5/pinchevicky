@@ -124,7 +124,7 @@
       
       <ul class="mb-2 mb-lg-0 " style="list-style: none;">  
       <a class="nav-link active" aria-current="page" href="#">
-    <!-- Username  <a>-->
+    <!-- Username  <a>--> 
             <?php 
                 if (isset($_SESSION["correo"])) {
                     $nombre=$_SESSION['nombre'];
@@ -134,13 +134,26 @@
                           Bienvenido:  &nbsp;&nbsp; $nombre
                             </a> 
                             <ul class='dropdown-menu bg-dark ' aria-labelledby='navbarDropdown2'>
-                            <li>  <form class='d-flex' method='GET' action=''><a class='dropdown-item clr-blanco' href='http://localhost/pinchevicky/views/cliente/verperfil.php?rol=' type='submit' name='perfil'>Ver Perfil</a></li>
-                            <li><a class='dropdown-item clr-blanco' href=''>Historial de compras</a></li>
-                            <li><a class='dropdown-item clr-blanco' href='http://localhost/pinchevicky/views/scripts/cerrar.php'>Cerrar Sesión</a></li>
+                            <li>  
+                            <form class='d-flex' method='GET' action='http://localhost/pinchevicky/views/cliente/verperfil.php?'>
+                                
+                            <a class='dropdown-item clr-blanco' 
+                            href='http://localhost/pinchevicky/views/cliente/verperfil.php?rol='
+                            
+                            >
+                            Ver Perfil
+                            </a></li>
+                            <li><a class='dropdown-item clr-blanco' 
+                            href=''>
+                            Historial de compras</a></li>
+                            <li><a class='dropdown-item clr-blanco' 
+                            href='http://localhost/pinchevicky/views/scripts/cerrar.php'>
+                            Cerrar Sesión</a></li>
                             <li><hr class='dropdown-divider'></li>";
                           
                           echo "</ul>";
-                          echo "</li></form> ";
+                          echo "</li>
+                          </form> ";
                         }
                  else {
                     echo"<a class='btn btn-outline-primary' href='http://localhost/pinchevicky/index.php?rol='>Ingresar</a>";
