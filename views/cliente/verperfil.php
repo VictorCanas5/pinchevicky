@@ -87,9 +87,7 @@
                        echo "$correo";
                       ?>
                    </div>
-                   <div class="col-3">
-                     <a href="EditarCorreo.php" class="ref btn btn-success" style="color:white">Editar</a>
-                   </div>
+                  
               </div> <br>
             </div>
        </div>
