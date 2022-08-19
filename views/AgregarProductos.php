@@ -20,7 +20,8 @@
     
 	body
     {
-		background-color:background: #808080;
+        
+      background-color:background: #808080;
         background: -moz-linear-gradient(top, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);
         background: -webkit-linear-gradient(top, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);
         background: linear-gradient(to bottom, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);;
@@ -58,40 +59,45 @@ use MyApp\Query\Select;
               <a class="nav-link disabled" href="#">Agregar Productos</a>
               <a class="nav-link clr-blanco" href="AdminProd.php">Regresar</a>
               <a class="nav-link clr-blanco" href="../index.php">Inicio</a>
-
             </nav>
 
             <div class="container" style="width: 40%;">
                 <br><br>
-                <div class="mb-3">
-                  <h1>Registro del producto</h1><br>
-                  <form action="../views/scripts/GuardarProductos.php" method="POST" enctype="multipart/form-data">
-                  <label for="nombre" class="form-label"><strong>Nombre</strong></label>
-                  <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Escribe el nombre del producto aqui">
-                </div>
-                <div class="mb-3">
-                  <label for="color" class="form-label"><strong>Imagen del Producto</strong></label>
-                  <input type="file" name="imagen" id="imagen" class="form-control">
-                </div>
-                <div class="mb-3">
-                  <label for="precio" class="form-label"><strong>Precio</strong></label>
-                  <input type="text" name="precio" id="" class="form-control" placeholder="Escribe el precio del producto aqui">
-                </div>
-                <div class="mb-3">
-                  <label for="existencia" class="form-label"><strong>Existencia</strong></label>
-                  <input type="text" name="existencia" id="" class="form-control" placeholder="Escribe el existencia del producto aqui">
-                </div>
-                <div class="mb-3">
-                  <label for="talla" class="form-label"><strong>Talla</strong></label>
-                  <input type="text" name="talla" id="" class="form-control" placeholder="Escribe la talla del producto aqui">
-                </div>
-                <div class="mb-3">
-                  <label for="color" class="form-label"><strong>Color</strong></label>
-                  <input type="text" name="color" id="" class="form-control" placeholder="Escribe el color del producto aqui">
-                </div>
                 
-               <!--Campo con consulta para la categoria -->
-                <?php 
+                <h1>Registro del producto</h1><br>
+                <div class="row">
+                  <div class="col-lg-6"><div class="mb-3">
+                      <form action="../views/scripts/GuardarProductos.php" method="POST" enctype="multipart/form-data">
+                      <label for="nombre" class="form-label"><strong>Nombre</strong></label>
+                     <input required type="text" name="nombre" id="nombre" class="form-control borde" placeholder="Escribe el nombre del producto aqui">
+                    </div>
+                    <div class="mb-3">
+                      <label for="color" class="form-label"><strong>Imagen del Producto</strong></label>
+                      <input required type="file" name="imagen" id="imagen" class="form-control borde">
+                    </div>
+                    <div class="mb-3">
+                      <label for="precio" class="form-label"><strong>Precio</strong></label>
+                      <input required type="text" name="precio" id="" class="form-control borde" placeholder="Escribe el precio del producto aqui">
+                    </div>
+                    
+              </div>
+                
+                <div class="col-lg-6 borde">
+                  <div class="mb-3">
+                  <div class="mb-3">
+                    
+                  <div class="mb-3">
+                      <label for="existencia" class="form-label"><strong>Existencia</strong></label>
+                      <input required type="text" name="existencia" id="" class="form-control borde" placeholder="Escribe el existencia del producto aqui">
+                    </div>
+                      <label for="talla" class="form-label"><strong>Talla</strong></label>
+                      <input required type="text" name="talla" id="" class="form-control borde" placeholder="Escribe la talla del producto aqui">
+                    </div>
+                  <label for="color" class="form-label"><strong>Color</strong></label>
+                  <input required type="text" name="color" id="" class="form-control borde" placeholder="Escribe el color del producto aqui">
+                </div>
+                </div>
+                <div class="col-lg-12"> <?php 
               require("../vendor/autoload.php");
               $queryS=new Select();
               $cadena="SELECT categoria.cve_cat,categoria.nom_cat from categoria";
@@ -101,7 +107,7 @@ use MyApp\Query\Select;
               <label for='categoria' class='form-label'>
                 <strong>Tipo</strong>
               </label>
-              <select name='categoria' class='nav-item dropdown  form-select  quitar-borde'>
+              <select required name='categoria' class='nav-item dropdown borde  form-select  quitar-borde'>
               <option selected> </option>";
 
               foreach($reg as $value)
@@ -110,7 +116,6 @@ use MyApp\Query\Select;
               }
               echo "</select>";
             ?>
-            <br>
             <!--Campo con consulta para la categoria_prenda -->
                 <?php 
               require("../vendor/autoload.php");
@@ -120,7 +125,7 @@ use MyApp\Query\Select;
               
               echo "  
               <label for='nombre' class='form-label'><strong>Categoria</strong></label>
-              <select name='categoria_prenda' class='nav-item dropdown  form-select  quitar-borde'>
+              <select required name='categoria_prenda' class='nav-item dropdown borde form-select  quitar-borde'>
               <option selected> </option>";
 
               foreach($reg as $value)
@@ -129,7 +134,6 @@ use MyApp\Query\Select;
               }
               echo "</select>";
             ?>
-            <br>
             <!--Campo con consulta para el genero-->
              <?php 
               require("../vendor/autoload.php");
@@ -139,7 +143,7 @@ use MyApp\Query\Select;
               
               echo "  
               <label for='genero' class='form-label'><strong>Genero</strong></label>
-              <select name='genero' class='nav-item dropdown  form-select  quitar-borde'>
+              <select required name='genero' class='nav-item dropdown borde form-select  quitar-borde'>
               <option selected> </option>";
 
               foreach($reg as $value)
@@ -147,11 +151,12 @@ use MyApp\Query\Select;
                 echo "<option class='dropdown-item' value='".$value->cve_gen."'>".$value->genero."</option> ";
               }
               echo "</select>";
-            ?>
-           <br>
-                <div class="container-fluid h-100"> 
+            ?></div>
+               
+        <div class="container-fluid h-100"> 
     		<div class="row w-100 align-items-center">
     			<div class="col text-center">
+            <br>
     				<button class="btn btn-primary regular-button">Guardar</button>
     			</div>	
     		</div>

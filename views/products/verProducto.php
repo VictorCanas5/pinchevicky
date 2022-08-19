@@ -71,16 +71,20 @@
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
+
 						  <div class="tab-pane active" id="pic-1"> <img class='imgC col' src="../scripts/<?php echo $producto->imagen ?>" alt=""></div>
 						
 						</div>
 						
+
 						
 					</div>
 					<div class="details col-md-6">
 						<h3 class="product-title">  <?php echo $producto->nombre; ?> </h3>
+
 						
 						<p class="product-description">Recuerda que esto es un bazar por lo tanto los productos son de segunda mano</p>
+
 						<h4 class="price">Precio: <span>$ <?php echo $producto->precio; ?></span></h4>
 						
 						<h5 class="sizes">Existencia: 
