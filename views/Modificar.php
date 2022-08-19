@@ -87,8 +87,10 @@
 
             <!-- Tabla select -->
 
+
               <div class="md-6">              <br>
                 <h1 align="center">Buscar productos</h1>
+
                 <br>
               </div>
               <form class="d-flex">
@@ -409,7 +411,7 @@
 
                   
                   echo 
-                  "<table class='table table-hover align='left'>
+                  "<table class='table-primary table-hover align='left'>
                   <thead class='table-dark'>
                   <tr>
                   <th> ID_Producto</th>
@@ -457,7 +459,7 @@
                 ?>              
                 </div>
             </div>
-                
+          </div>
               <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 
