@@ -37,7 +37,7 @@ foreach ($card as $registros){
 <div class="container-card col-lg-4">
 <div class="card card_t">
 <figure class='sizeimg'>
-<?php echo "<img src='/scripts/$registros->imagen'>";?>
+<?php echo "<img src='scripts/$registros->imagen'>";?>
 </figure>
 <div class="contenido-card">
 <h3><?php echo $registros->nombre?></h3>

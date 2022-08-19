@@ -15,12 +15,7 @@
   <?php
   use MyApp\Query\Ejecuta;
   session_start();
-  $ROL = $_GET['rol'];
-  if ($ROL == NULL) 
-  {
-    header("refresh:2 ../../index.php");
-    
-  }
+  
   ?>
   <?php 
     

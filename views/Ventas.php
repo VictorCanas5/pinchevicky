@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Modificar Producto</title>
+    <title>Ordenes</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,12 +20,8 @@
     
 	body
     {
-		background-color:background: #808080;
-        background: -moz-linear-gradient(top, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);
-        background: -webkit-linear-gradient(top, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);
-        background: linear-gradient(to bottom, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);;
-		background-size: 100vw 100vh;
-		background-repeat: no-repeat;
+        
+		background-image: url('http://localhost/pinchevicky/src/img/diagonal_striped_brick.png');
 	}
     .fondo
     {
@@ -46,32 +42,65 @@
         border-color:black;
         border-radius:5px;
     }
+    .fecha
+    {
+      width:50%;
+      margin: auto;
+    }
+    .buscar
+    {
+      width:20%;
+      margin: auto;
+    }
+    .contenedor
+    {
+      text-align: center;
+    }
+    .resaltar
+    {
+      text-decoration: strong;
+    }
 
     </style>
   </head>
   <body>
   <?php
-
-use MyApp\Query\Select;
-
-
-
+  use MyApp\Query\Select;
+  require_once("../vendor/autoload.php");
+  require ('components/navbar.php');
 ?>
-            <nav class="nav justify-content-center navbar-dark bg-dark ">
-              <a class="nav-link disabled" href="#">Agregar Productos</a>
-            </nav>
-
             <!-- Tabla select -->
-
-              <div class="md-6">              
-                <h1 align="center">Productos actuales</h1>
+            <h1 align="center">Ordenes Activas</h1>
                 <br>
+            <div class="row">
+            <div class="containermd-6 offset-lg-4">              
+                
               </div>
               <form class="d-flex">
                 <button class="btn btn-outline-success" name="refresh" type="submit">Refrescar</button>
                 <input onkeyup="$enviar" class="form-control me-2" name="busqueda" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" name="enviar" type="submit">Buscar</button>
               </form>
+            </div>
+            <br><br>
+            <div class="contenedor row">
+              
+              <label for="fecha_detalle" ><strong>Buscar por fecha/periodo</strong></label><br>
+              <form  method="POST">
+              <div class="">
+                <small>Fecha 1</small>
+                <input  required class="form-control fecha" name="fecha_detalle1"type="date" />
+                </div>
+                <div class="">
+                <small>Fecha 2</small> <input required class="form-control fecha" name="fecha_detalle2"type="date" />
+                </div>
+                <br>
+                <button class="btn btn-outline-success buscar" name="mandar" type="submit">Buscar</button>
+                
+            </div>
+              </form>
+               
+              <br>
               <?php
                   
                 if (isset($_GET['enviar'])) 
@@ -84,7 +113,7 @@ use MyApp\Query\Select;
 
                   $cadena = "SELECT RV.PRODUCTO, 
                   RV.PRECIO, 
-                  RV.FECHA_DE_VENTA AS 'FECHA DE VENTA',
+                  RV.FECHA_DE_VENTA AS 'FECHA_DE_VENTA',
                   RV.No_ORDEN,
                   RV.CLIENTE 
                   FROM (SELECT productos.nombre as 'PRODUCTO', 
@@ -95,7 +124,7 @@ use MyApp\Query\Select;
                   FROM persona JOIN usuario ON persona.id_persona=usuario.persona 
                   JOIN orden on orden.usr=usuario.id_usr 
                   JOIN detalle_orden on orden.reg = detalle_orden.orden 
-                  JOIN productos ON detalle_orden.producto=productos.cve_prod)AS RV
+                  JOIN productos ON detalle_orden.producto=productos.cve_prod where detalle_orden.estado='Activo')AS RV
                   WHERE RV.PRODUCTO LIKE '%$busqueda%'
                   OR RV.PRECIO LIKE '%$busqueda%'
                   OR RV.FECHA_DE_VENTA LIKE '%$busqueda%'
@@ -110,8 +139,8 @@ use MyApp\Query\Select;
                   <thead class='table-dark'>
                   <tr>
                   <th> Producto </th>
-                  <th> Precio </th>
-                  <th> Fecha de venta </th>
+                  <th> Precio estimado</th>
+                  <th> Fecha de orden </th>
                   <th> No_Orden </th>
                   <th> Cliente </th>
                   </tr>
@@ -123,9 +152,9 @@ use MyApp\Query\Select;
                     
                     echo "<tr>";
                     echo "<td> $registros->PRODUCTO</td>";
-                    echo "<td><img src='<?=views/scripts/$registros->PRECIO?>'></td>";
+                    echo "<td><h3>$ $registros->PRECIO</h3></td>";
                     echo "<td> $registros->FECHA_DE_VENTA </td>";
-                    echo "<td> $registros->No_ORDEN </td>";
+                    echo "<td> <h4>$registros->No_ORDEN </h4></td>";
                     echo "<td> $registros->CLIENTE </td>";
                   echo "</td>
                         </tr>";
@@ -134,66 +163,77 @@ use MyApp\Query\Select;
                   </table>";
                   
                 }
-                else if ($refresh=true) 
-                {
-                require("../vendor/autoload.php");
-                
-                $query = new Select();
-
-                $cadena = "SELECT RV.PRODUCTO, 
-                  RV.PRECIO, 
-                  RV.FECHA_DE_VENTA AS 'FECHA DE VENTA',
-                  RV.No_ORDEN,
-                  RV.CLIENTE 
-                  FROM (SELECT productos.nombre as 'PRODUCTO', 
-                  productos.precio as 'PRECIO', 
-                  detalle_orden.fecha_detalle AS 'FECHA_DE_VENTA', 
-                  orden.reg as 'No_ORDEN', 
-                  CONCAT(persona.nombre, ' ',persona.apellidos)as 'CLIENTE' 
-                  FROM persona JOIN usuario ON persona.id_persona=usuario.persona 
-                  JOIN orden on orden.usr=usuario.id_usr 
-                  JOIN detalle_orden on orden.reg = detalle_orden.orden 
-                  JOIN productos ON detalle_orden.producto=productos.cve_prod)AS RV";
-                  $tabla = $query->seleccionar($cadena);
-
-                  /* tabla cabeceras */
-                  echo "<table class='table table-hover align='left'>
-                  <thead class='table-dark'>
-                  <tr>
-                  <th> Producto </th>
-                  <th> Precio </th>
-                  <th> Fecha de venta </th>
-                  <th> No_Orden </th>
-                  <th> Cliente </th>
-                  </tr>
-                  </thead>
-                  <tbody>";
-                  /* foreach donde manda a traer los datos*/
-                  foreach($tabla as $registros)
-                  {
-                    echo "<tr>";
-                    echo "<td> $registros->PRODUCTO</td>";
-                    echo "<td><img src='<?=views/scripts/$registros->PRECIO?>'></td>";
-                    echo "<td> $registros->FECHA_DE_VENTA </td>";
-                    echo "<td> $registros->No_ORDEN </td>";
-                    echo "<td> $registros->CLIENTE </td>";
-                  echo "</td>
-                        </tr>";
-                  }
-                  echo "</tbody>
-                  </table>";
-              }
-
+               
                   
-                ?>              
+                  
+                  else if (isset($_POST['fecha_detalle1'])&&isset($_POST['fecha_detalle2'])) 
+                  {
+                    $fecha1= $_POST['fecha_detalle1'];
+                    $fecha2= $_POST['fecha_detalle2'];
+                    
+                  require("../vendor/autoload.php");
+                  
+                  $query = new Select();
+  
+                    $cadena = "SELECT RV.PRODUCTO, 
+                    RV.PRECIO, 
+                    RV.FECHA_DE_VENTA AS 'FECHA_DE_VENTA',
+                    RV.No_ORDEN,
+                    RV.CLIENTE 
+                    FROM (SELECT productos.nombre as 'PRODUCTO', 
+                    productos.precio as 'PRECIO', 
+                    detalle_orden.fecha_detalle AS 'FECHA_DE_VENTA', 
+                    orden.reg as 'No_ORDEN', 
+                    CONCAT(persona.nombre, ' ',persona.apellidos)as 'CLIENTE' 
+                    FROM persona JOIN usuario ON persona.id_persona=usuario.persona 
+                    JOIN orden on orden.usr=usuario.id_usr 
+                    JOIN detalle_orden on orden.reg = detalle_orden.orden 
+                    JOIN productos ON detalle_orden.producto=productos.cve_prod where detalle_orden.estado='Activo')AS RV
+                    WHERE RV.FECHA_DE_VENTA between'$fecha1' and '$fecha2'
+                    ";
+  
+                    $tabla = $query->seleccionar($cadena);
+  
+                    /* tabla cabeceras */
+                    echo "<table class='table table-hover align='left'>
+                    <thead class='table-dark'>
+                    <tr>
+                    <th> Producto </th>
+                    <th> Precio estimado</th>
+                    <th> Fecha de orden </th>
+                    <th> No_Orden </th>
+                    <th> Cliente </th>
+                    </tr>
+                    </thead>
+                    <tbody>";
+                    /* foreach donde manda a traer los datos*/
+                    foreach($tabla as $registros)
+                    {
+                      
+                      echo "<tr>";
+                      echo "<td> $registros->PRODUCTO</td>";
+                      echo "<td><h2 >$ $registros->PRECIO</h2></td>";
+                      echo "<td> $registros->FECHA_DE_VENTA </td>";
+                      echo "<td> <h4>$registros->No_ORDEN </h4></td>";
+                      echo "<td> $registros->CLIENTE </td>";
+                    echo "</td>
+                          </tr>";
+                    }
+                    echo "</tbody>
+                    </table>";
+                    
+                  }
+                 
+                    
+                  ?>                           
                 </div>
             </div>
 
 <?php
 /* } */
-?>
-                
+?>                
               <!-- Bootstrap JavaScript Libraries -->
+              <script src="..\js\datapicker.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>

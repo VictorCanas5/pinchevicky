@@ -97,7 +97,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="color" class="form-label"><strong>Imagen del Producto</strong></label>
-                  <input type="file" name="imagen" id="imagen" class="form-control">
+                  <input required type="file" name="imagen" id="imagen" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label for="precio" class="form-label"><strong>Precio</strong></label>

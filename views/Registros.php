@@ -26,12 +26,7 @@
 	}
     .fondo
     {
-        background-color:background: #808080;
-        background: -moz-linear-gradient(top, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);
-        background: -webkit-linear-gradient(top, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);
-        background: linear-gradient(to bottom, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);;
-		background-size: 100vw 100vh;
-		background-repeat: no-repeat;
+        background-color:white;
     }
     .clr-blanco
     {
@@ -54,7 +49,10 @@
         text-align: center;
         font
     }
-
+    table
+    {
+      border-radius: 30px;
+    }
     </style>
   </head>
   <body>
@@ -76,31 +74,93 @@
      require("../vendor/autoload.php");
      $query = new Select();
      
-     $cadena = "SELECT productos.nombre as 'PRODUCTO', productos.precio as 'PRECIO',
-     detalle_orden.fecha_detalle AS 'FECHA DE VENTA', orden.reg as 'No. ORDEN',
+     $cadena = "SELECT productos.nombre , productos.precio,
+     detalle_orden.fecha_detalle , orden.reg ,
      CONCAT(persona.nombre, ' ',persona.apellidos)as 'CLIENTE' FROM persona JOIN usuario ON persona.id_persona=usuario.persona JOIN orden on orden.usr=usuario.id_usr 
-     join detalle_orden on orden.reg = detalle_orden.orden JOIN productos ON detalle_orden.producto=productos.cve_prod;
-     
-        ";
+     join detalle_orden on orden.reg = detalle_orden.orden JOIN productos ON detalle_orden.producto=productos.cve_prod LIMIT 10";
      
      $VG = $query->seleccionar($cadena); 
-     ?><br><br>
-     <ul class="list-group acomodo">
-<li class="list-group-item"><strong><h2>Ventas General</h2></strong></li>
+     ?>
+     <br><br>
+     <div class="row">
+      <div class="col">
+      <h2>Ultimas 10 ventas</h2>
+     <table class="table fondo">
+  <thead>
+    
+      <th scope="col">#</th>
+      <th scope="col">Producto</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Fecha de venta</th>
+      <th scope="col">No. Orden</th>
+      <th scope="col">Cliente</th>
+    
+  </thead>
+    
 <?php   
+$i=1;
 foreach ($VG as $registros){
- ?>
-
  
-            
-         
-  <li class="list-group-item"><?php echo "Cantidad de Ventas &nbsp &nbsp".($registros->PRODUCTO)?></li>
-  <li class="list-group-item"><?php echo "<strong>Suma Total de Ventas</strong> &nbsp &nbsp".($registros->PRECIO)?></li>
- 
-  <?php
+  echo "<tr>";
+  echo "<td> $i</td>";
+  echo "<td> $registros->nombre</td>";
+  echo "<td><h4 >$ $registros->precio</h4></td>";
+  echo "<td> $registros->fecha_detalle </td>";
+  echo "<td> <h4>$registros->reg </h4></td>";
+  echo "<td> $registros->CLIENTE </td>";
+echo "</td>
+      </tr>";
+      $i++;
 }
+echo "</tbody>
+</table>";
 ?>
-</ul>
+      </div>
+     <br><br>
+      <div class="col">
+      <h2>Cantidad de ventas de cada categoria</h2>
+     <table class="table fondo">
+  <thead>
+    
+      <th scope="col">#</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Ventas</th>
+    
+  </thead>
+     <?php 
+     $query = new Select();
+     
+     $cadena = "SELECT PVC.CATEGORIA, SUM(VENTAS) AS VENTAS FROM (
+      SELECT categoria_prenda.prenda as 'CATEGORIA', COUNT(RV.PRODUCTO) AS 'VENTAS' FROM categoria_prenda 
+         INNER JOIN 
+         (SELECT productos.categoria_prenda AS CATEGORIA_PRENDA,productos.nombre as 'PRODUCTO', 
+         productos.precio as 'PRECIO',
+         detalle_orden.fecha_detalle AS 'FECHA_DE_VENTA', 
+         orden.reg as 'No_ORDEN',
+         CONCAT(persona.nombre, ' ',persona.apellidos)as 'CLIENTE' FROM persona 
+         JOIN usuario ON persona.id_persona=usuario.persona 
+         JOIN orden on orden.usr=usuario.id_usr 
+         join detalle_orden on orden.reg = detalle_orden.orden 
+         JOIN productos ON detalle_orden.producto=productos.cve_prod)AS RV ON categoria_prenda.cve_pcat = RV.CATEGORIA_PRENDA
+         GROUP BY categoria_prenda,RV.PRODUCTO) AS PVC GROUP BY PVC.CATEGORIA";
+     
+     $PVC = $query->seleccionar($cadena);   
+$f=1;
+foreach ($PVC as $registros){
+ 
+  echo "<tr>";
+  echo "<td> $f</td>";
+  echo "<td> $registros->CATEGORIA</td>";
+  echo "<td><h4 >$registros->VENTAS</h4></td>";
+echo "</td>
+      </tr>";
+      $f++;
+}
+echo "</tbody>
+</table>";
+?>
+      </div>
+  
 
 <!----------------------- Ventas del mes------------------------------------------------------------------------------------------->
 
@@ -114,37 +174,6 @@ foreach ($VG as $registros){
 
     <!----------------------- Productos vendidos por categoria------------------------------------------------------------------------------------------->
 
-    <?php
-     
-     $query = new Select();
-     
-     $cadena = "SELECT categoria_prenda.prenda as 'CATEGORIA', COUNT(RV.PRODUCTO) AS 'VENTAS' FROM categoria_prenda 
-     INNER JOIN 
-     (SELECT productos.categoria_prenda AS CATEGORIA_PRENDA,productos.nombre as 'PRODUCTO', 
-     productos.precio as 'PRECIO',
-     detalle_orden.fecha_detalle AS 'FECHA_DE_VENTA', 
-     orden.reg as 'No_ORDEN',
-     CONCAT(persona.nombre, ' ',persona.apellidos)as 'CLIENTE' FROM persona 
-     JOIN usuario ON persona.id_persona=usuario.persona 
-     JOIN orden on orden.usr=usuario.id_usr 
-     join detalle_orden on orden.reg = detalle_orden.orden 
-     JOIN productos ON detalle_orden.producto=productos.cve_prod)AS RV ON categoria_prenda.cve_pcat = RV.CATEGORIA_PRENDA
-     GROUP BY categoria_prenda,RV.PRODUCTO;";
-     
-     $PVC = $query->seleccionar($cadena); 
-     ?>
-
-     <br><br><ul class="list-group acomodo">
-     <li class="list-group-item"><strong><h2>Productos vendidos por categoria</h2></strong></li>
-     <?php
-    foreach ($PVC as $registros){
- ?>
-            
-  <li class="list-group-item"><?php echo "Categoria: &nbsp &nbsp".($registros->CATEGORIA)?></li>
-  <li class="list-group-item"><?php echo "Ventas &nbsp &nbsp".($registros->VENTAS)?></li>
-  <?php
-    }
-    ?>
     <!----------------------- ------------------------------------------------------------------------------------------->
 
 

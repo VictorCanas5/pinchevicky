@@ -107,7 +107,9 @@
                     <ul class='dropdown-menu bg-dark ' aria-labelledby='navbarDropdown'>
                     <li><a class='dropdown-item clr-blanco' href='AdminProd.php'>Administrar Productos</a></li>
                       <li><hr class='dropdown-divider'></li>
-                      <li><a class='dropdown-item clr-blanco' href='AdminVenta.php'>Registros de Venta</a></li>
+                      <li><a class='dropdown-item clr-blanco' href='AdminCategorias.php'>Administrar Categorias</a></li>
+                      <li><hr class='dropdown-divider'></li>
+                      <li><a class='dropdown-item clr-blanco' href='AdminVenta.php'>Administrar Ventas</a></li>
                       <li><hr class='dropdown-divider'></li>
                       <li><a class='dropdown-item clr-blanco' href='AdminClientes.php'>Clientes Registrados</a></li>
                     </ul>";

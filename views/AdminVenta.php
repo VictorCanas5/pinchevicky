@@ -18,15 +18,12 @@
 		font-family: 'Montserrat Alternates', sans-serif;
 	}
     
-	body
+  body
     {
-		background-color:background: #808080;
-        background: -moz-linear-gradient(top, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);
-        background: -webkit-linear-gradient(top, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);
-        background: linear-gradient(to bottom, #808080 0%, #B3B3B3 50%, #C5C5C5 100%);;
-		background-size: 100vw 100vh;
-		background-repeat: no-repeat;
+        
+		background-image: url('http://localhost/pinchevicky/src/img/diagonal_striped_brick.png');
 	}
+    
     .fondo
     {
         background-color:background: #808080;
@@ -50,12 +47,9 @@
   </head>
   <body>
   <?php
-
+  require ('components/navbar.php');
 ?>
-            <nav class="nav justify-content-center navbar-dark bg-dark ">
-              <a class="nav-link disabled" href="">Administrar Productos</a>
-              <a class='nav-link clr-blanco' href='indice.php'>Inicio</a>
-            </nav>
+            
     <div class="container ">
             <h4></h4>
             <div class="list-group ">
