@@ -10,6 +10,13 @@
    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: 'Montserrat Alternates', sans-serif;
+	}
       .perfil{
         background-color: white;
         border: solid;
@@ -64,45 +71,27 @@
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane active" id="pic-1"> <img class='imgC col' src="../scripts/<?php echo $producto->imagen ?>" alt=""></div>
+						
 						</div>
-						<ul class="preview-thumbnail nav nav-tabs">
-						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						</ul>
+						
 						
 					</div>
 					<div class="details col-md-6">
 						<h3 class="product-title">  <?php echo $producto->nombre; ?> </h3>
-						<div class="rating">
-							<div class="stars">
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-							</div>
-							<span class="review-no">41 reviews</span>
-						</div>
-						<p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+						
+						<p class="product-description">Recuerda que esto es un bazar por lo tanto los productos son de segunda mano</p>
 						<h4 class="price">Precio: <span>$ <?php echo $producto->precio; ?></span></h4>
-						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p> 
+						
 						<h5 class="sizes">Existencia: 
                          <?php echo $producto->exitencia; ?>
 						</h5>
-						<h5 class="colors">colores: 
+						<h5 class="colors">Colores: 
                         <?php echo $producto->color; ?>
 							
 						</h5>
 						<div class="action">
-							<a class="add-to-cart btn btn-default" href="http://localhost/pinchevicky/views/products/Compra.php">Comprar</a>
+							<a class="" href="http://localhost/pinchevicky/views/products/Compra.php?cve_prod=<?php $cve=$_GET['cve_prod']; echo $cve; ?>"><input class="add-to-cart btn btn-default" type="submit" value="Comprar"></a>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
 					</div>
@@ -203,7 +192,7 @@ img {
           flex-grow: 1; }
 
 .product-title, .price, .sizes, .colors {
-  text-transform: UPPERCASE;
+ 
   font-weight: bold; }
 
 .checked, .price span {
@@ -234,7 +223,7 @@ img {
   background: #2fb4cc;
   padding: 1.2em 1.5em;
   border: none;
-  text-transform: UPPERCASE;
+  
   font-weight: bold;
   color: #fff;
   -webkit-transition: background .3s ease;

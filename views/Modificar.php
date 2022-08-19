@@ -57,15 +57,15 @@ use MyApp\Query\Select;
             <nav class="nav justify-content-center navbar-dark bg-dark ">
               <a class="nav-link disabled" href="">Modificar Producto</a>
               <?php
-                echo "<a class='nav-link clr-blanco' href='AdminProd.php?rol=$ROL'>Regresar</a>";
+                echo "<a class='nav-link clr-blanco' href='AdminProd.php'>Regresar</a>";
                 
-                echo "<a class='nav-link clr-blanco' href='indice.php?rol=$ROL'>Inicio</a>";
+                echo "<a class='nav-link clr-blanco' href='indice.php'>Inicio</a>";
               ?>
               
             </nav>
 
             <!-- Tabla select -->
-
+<div class="container">
               <div class="md-6">              
                 <h1 align="center">Productos actuales</h1>
                 <br>
@@ -115,7 +115,7 @@ use MyApp\Query\Select;
 
                   
                   echo 
-                  "<table class='table table-hover align='left'>
+                  "<table class='table-primary table-hover align='left'>
                   <thead class='table-dark'>
                   <tr>
                   <th> ID_Producto</th>
@@ -227,7 +227,7 @@ use MyApp\Query\Select;
                 ?>              
                 </div>
             </div>
-                
+          </div>
               <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 
